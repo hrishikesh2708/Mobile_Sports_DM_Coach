@@ -5,6 +5,7 @@ using System.IO;
 using System.Collections;
 using UnityEngine.Networking;
 using System.Linq;
+using UnityEngine.UI;
 
 public class CoachManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class CoachManager : MonoBehaviour
     public CoachData defenseCoach;
     public CoachData offenseCoach;
     public CoachData SpecialCoach;
+
+    public Button fireOffence;
+    public Button fireDefense;
 
     [Header("API Configuration")]
     [SerializeField] private string baseURL = "http://localhost:5175";
@@ -44,6 +48,9 @@ public class CoachManager : MonoBehaviour
 
     private void Start()
     {
+        fireOffence.onClick.AddListener(() =>FireCoach(CoachType.Offense));
+        fireDefense.onClick.AddListener(() =>FireCoach(CoachType.Defense));
+
         InitializeSystem();
     }
 
