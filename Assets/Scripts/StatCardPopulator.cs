@@ -18,6 +18,10 @@ public class StatCardPopulator : MonoBehaviour
     [Header("Sprites")]
     public Sprite arrowUp;
     public Sprite arrowDown;
+    public Sprite offenseIcon;
+    public Sprite defenseIcon;
+    public Sprite specialTeamsIcon;
+    public Sprite winRateIcon;
 
     [Header("Data")]
     public List<StatEntry> stats = new();
@@ -31,10 +35,10 @@ public class StatCardPopulator : MonoBehaviour
 
     // Configurable sizes
     [Header("Visual Settings")]
-    public Vector2 iconSize = new Vector2(20, 20);
-    public Vector2 arrowSize = new Vector2(20, 20);
-    public float labelFontSize = 16f;
-    public float valueFontSize = 16f;
+    public Vector2 iconSize = new Vector2(30, 30);
+    public Vector2 arrowSize = new Vector2(30, 30);
+    public float labelFontSize = 30f;
+    public float valueFontSize = 30f;
     public float weeklyFontSize = 14f;
 
     void Start()
@@ -311,7 +315,8 @@ public class StatCardPopulator : MonoBehaviour
         {
             stat = "Win Rate %",
             beforeValue = baselineWinRate,
-            afterValue = currentWinRate
+            afterValue = currentWinRate,
+            icon = winRateIcon
         });
 
         // Offensive Rating
@@ -320,9 +325,10 @@ public class StatCardPopulator : MonoBehaviour
         
         performanceStats.Add(new StatEntry
         {
-            stat = "Offense Rating",
+            stat = "Offense",
             beforeValue = baselineOffense,
-            afterValue = currentOffense
+            afterValue = currentOffense,
+            icon = offenseIcon
         });
 
         // Defensive Rating  
@@ -331,9 +337,10 @@ public class StatCardPopulator : MonoBehaviour
         
         performanceStats.Add(new StatEntry
         {
-            stat = "Defense Rating",
+            stat = "Defense",
             beforeValue = baselineDefense,
-            afterValue = currentDefense
+            afterValue = currentDefense,
+            icon = defenseIcon
         });
 
         // Special Teams Rating
@@ -344,11 +351,12 @@ public class StatCardPopulator : MonoBehaviour
         {
             stat = "Special Teams",
             beforeValue = baselineSpecialTeams,
-            afterValue = currentSpecialTeams
+            afterValue = currentSpecialTeams,
+            icon = specialTeamsIcon
         });
 
         // Weekly Investment
-        int baselineInvestment = 0;
+        /*int baselineInvestment = 0;
         int currentInvestment = CalculateWeeklyInvestment(coaches);
         
         performanceStats.Add(new StatEntry
@@ -356,7 +364,7 @@ public class StatCardPopulator : MonoBehaviour
             stat = "Weekly Investment",
             beforeValue = baselineInvestment,
             afterValue = currentInvestment
-        });
+        });*/
 
         return performanceStats;
     }
