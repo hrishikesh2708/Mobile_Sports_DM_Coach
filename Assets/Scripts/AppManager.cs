@@ -11,6 +11,7 @@ public class AppManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject coachHiringScreen;
     public GameObject coachDetailsScreen;
+    public GameObject performanceScreen;
 
     [Header("Navigation Buttons for Screen 1")]
 
@@ -40,6 +41,9 @@ public class AppManager : MonoBehaviour
     public Button backToMarketButton;
     public Button hireButton;
 
+    [Header("Navigation Buttons for Screen 4")]
+    public Button backButton;
+    public Button detailedStatsButton;
     private void Start()
     {
         // Assigning button clicks to corresponding screens
@@ -50,7 +54,7 @@ public class AppManager : MonoBehaviour
         viewDefenseCoachButton.onClick.AddListener(() => ShowScreen(coachDetailsScreen));
         fireDefenseCoachButton.onClick.AddListener(() => Debug.Log("Fire deffence coach button was clicked"));
         hiringCoachMarketButton.onClick.AddListener(() => ShowScreen(coachHiringScreen));
-        performanceButton.onClick.AddListener(() => Debug.Log("Performance button was clicked"));
+        performanceButton.onClick.AddListener(() => ShowScreen(performanceScreen));
         historyButton.onClick.AddListener(() => Debug.Log("History button was clicked"));
 
         // Screen 2 Buttons
@@ -70,6 +74,10 @@ public class AppManager : MonoBehaviour
         backToMarketButton.onClick.AddListener(() => ShowScreen(coachHiringScreen));
         hireButton.onClick.AddListener(() => Debug.Log("Hire button was clicked"));
 
+        // Screen 4 Buttons
+        backButton.onClick.AddListener(() => ShowScreen(mainMenu));
+        detailedStatsButton.onClick.AddListener(() => Debug.Log("Detailed Stats button was clicked"));
+
         ShowScreen(mainMenu); // Default starting screen
     }
 
@@ -79,6 +87,7 @@ public class AppManager : MonoBehaviour
         mainMenu.SetActive(false);
         coachHiringScreen.SetActive(false);
         coachDetailsScreen.SetActive(false);
+        performanceScreen.SetActive(false);
 
         // Activate the one you want
         if (targetScreen != null)
